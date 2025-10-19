@@ -17,8 +17,8 @@ import messageRouter from "./routes/messages/messages.js";
 
 // settings cors options 
 const corsOptions = {
-    origin: 'https://hangout-qmom.onrender.com', // allow only this origin
-    //origin: "http://localhost:3000",
+    //    origin: 'https://hangout-qmom.onrender.com', // allow only this origin
+    origin: "http://localhost:3000",
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -41,8 +41,8 @@ app.use('/messages', authenticateToken,  messageRouter);
 try { 
     mongoose.connect(process.env.URI)
         .then(() => {
-            server.listen(5000, () => {
-                console.log(`server started`);
+            server.listen(process.env.PORT, () => {
+                console.log(`server started on ${process.env.PORT}`);
             })
         }).catch((error) => {
             console.log("server could not be started", error);

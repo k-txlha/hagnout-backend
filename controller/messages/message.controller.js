@@ -4,7 +4,6 @@ import redisClient from "../../redis/redis.js";
 
 export const getMessages = async (req, res) => {
 	const id = req.params.id;
-	console.log(id);
 
 	const cachedConversations = await redisClient.get(id);
 

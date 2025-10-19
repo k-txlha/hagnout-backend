@@ -6,7 +6,7 @@ var roomCount = 1;
 function randomString(length, chars) {
   var result = "";
   for (var i = length; i > 0; --i)
-    result += chars[Math.floor(Math.random() * chars.length)];
+  result += chars[Math.floor(Math.random() * chars.length)];
   return result;
 }
 
@@ -141,23 +141,23 @@ export const fetchTracksController = async (request, response) => {
     }
     return response.send(tracks);
   } catch(error) {
-     return response.status(500).send({message: "Internal srever error"});
+    return response.status(500).send({message: "Internal srever error"});
   }
 }
 
 // *********** Music controller ***********
 export const addMusicToRoomPlayerController = async (request, response) => {
-	const roomId = request.body.roomId;
+  const roomId = request.body.roomId;
 
-	const {trackName} = request.body;
-	const {trackUrl} = request.body;
-	const room = await roomModel.findById(roomId);
-	room.tracks.push({trackName, trackUrl});
+  const {trackName} = request.body;
+  const {trackUrl} = request.body;
+  const room = await roomModel.findById(roomId);
+  room.tracks.push({trackName, trackUrl});
 
-	room.save()
-	return response.status(200).send({
-		message: "Track has been added"
-	})
+  room.save()
+  return response.status(200).send({
+    message: "Track has been added"
+  })
 };
 
 export const fetchRoomMembers = async (request, response) => {
@@ -165,7 +165,7 @@ export const fetchRoomMembers = async (request, response) => {
   try {
     const room = await roomModel.findById(roomId); 
     const membersInfo = [];
-    
+
     for (const member of room.members) {
       const user = await userModel.find({username: member.username})
       membersInfo.push({ username: user[0].username, profilePic: user[0].profilePic });
@@ -176,4 +176,3 @@ export const fetchRoomMembers = async (request, response) => {
     response.send({ "Something went wrong": e });
   }
 };
-
