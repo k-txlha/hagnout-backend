@@ -114,9 +114,9 @@ export const userLoginController = async (request, response) => {
                         process.env.ACCESS_TOKEN_SECRET
                     )
                     response.cookie('token', accessToken, {
-                        httpOnly: false,
-                        secure: false,
-                        sameSite: 'Lax',
+                        httpOnly: true,
+                        secure: true,
+                        sameSite: None,
                         maxAge: 24 * 60 * 60 * 1000 // 1 day 
                     })
                     response.status(200).send({
