@@ -1,28 +1,23 @@
 .forbidden-access-container {
-    text-align: center;
-    height: 100vh;
+  text-align: center;
+  height: 100vh;
 }
 
 .error-msg {
-    position: relative;
-    top: 45%;
+  position: relative;
+  top: 45%;
 }
 
 .forbidden-heading {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
 }
 
 .forbidden-tag {
-    font-family: 'Hind Madurai', sans-serif;
+  font-family: "Hind Madurai", sans-serif;
 }
 
 .code {
-    background-color: #0067B8;
-color: #ffffff;
+  background-color: #0067b8;
+  color: #ffffff;
 }
-
-
-
-
-

@@ -1,8 +1,14 @@
 import jwt from "jsonwebtoken";
-import userModel from "../models/users/userModel.js";
-import path from "path";
-import { fileURLToPath } from "url";
+import User from "../models/user.model.js";
 
+/**
+ * Express middleware that verifies the JWT token from cookies
+ * and validates the requesting user's identity.
+ *
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
+ * @param {import('express').NextFunction} next
+ */
 function authenticateToken(req, res, next) {
   const token = req.cookies.token;
 
@@ -18,12 +24,12 @@ function authenticateToken(req, res, next) {
       return res.status(403).json({ message: "Invalid token" });
     }
 
-    const authenticateUser = await userModel.findOne({
+    const authenticatedUser = await User.findOne({
       username: req.body.username,
     });
 
-    if (authenticateUser) {
-      if (authenticateUser._id != user.userId) {
+    if (authenticatedUser) {
+      if (authenticatedUser._id != user.userId) {
         console.log("⚠️ Warning: Unauthorized Access Attempted!");
         return res
           .status(401)
@@ -31,7 +37,6 @@ function authenticateToken(req, res, next) {
       }
     }
 
-    //console.log("✅ Token Verified, User:", user);
     req.user = user;
     next();
   });

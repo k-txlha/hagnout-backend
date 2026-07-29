@@ -1,13 +1,16 @@
 import { AMQPClient } from "@cloudamqp/amqp-client";
-import dotenv from "dotenv";
 
-dotenv.config();
-
+/**
+ * Starts a RabbitMQ consumer that listens for "song_change" events
+ * and broadcasts them to the appropriate Socket.IO room.
+ * Automatically reconnects after 1 second on failure.
+ *
+ * @param {import('socket.io').Server} io - The Socket.IO server instance.
+ * @returns {Promise<void>}
+ */
 async function consumeEvents(io) {
   try {
-    const amqp = new AMQPClient(
-      process.env.RABBITMQ_KEY
-    );
+    const amqp = new AMQPClient(process.env.RABBITMQ_KEY);
     const conn = await amqp.connect();
     const ch = await conn.channel();
 
@@ -18,7 +21,10 @@ async function consumeEvents(io) {
       const data = JSON.parse(msg.bodyToString());
       console.log(`📥 Received song_change event:`, data);
 
-      io.to(data.roomId).emit('song_change', {trackName : data.trackName, trackUrl : data.trackUrl});
+      io.to(data.roomId).emit("song_change", {
+        trackName: data.trackName,
+        trackUrl: data.trackUrl,
+      });
     });
 
     await consumer.wait();

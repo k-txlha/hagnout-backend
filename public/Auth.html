@@ -1,58 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>403 Forbidden</title>
     <style>
-        .forbidden-access-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
-        .error-msg {
-            max-width: 400px;
-        }
-        .forbidden-heading {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .code {
-            font-size: 30px;
-            color: red;
-        }
-        .forbidden-tag {
-            margin: 10px 0;
-        }
-        .text-xs {
-            font-size: 14px;
-            color: blue;
-            text-decoration: none;
-        }
-        .text-xs:hover {
-            text-decoration: underline;
-        }
+      .forbidden-access-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+      .error-msg {
+        max-width: 400px;
+      }
+      .forbidden-heading {
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .code {
+        font-size: 30px;
+        color: red;
+      }
+      .forbidden-tag {
+        margin: 10px 0;
+      }
+      .text-xs {
+        font-size: 14px;
+        color: blue;
+        text-decoration: none;
+      }
+      .text-xs:hover {
+        text-decoration: underline;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="forbidden-access-container">
-        <div class="error-msg">
-            <h1 class="forbidden-heading">
-                <span class="code">403</span> Forbidden Access
-            </h1>
-            <p class="forbidden-tag">
-                You are not authorized to access this page. Try logging in first.
-            </p>
-            <div>
-                <a href="/users/login" class="text-xs">Already have an account? Login</a>
-            </div>
+      <div class="error-msg">
+        <h1 class="forbidden-heading">
+          <span class="code">403</span> Forbidden Access
+        </h1>
+        <p class="forbidden-tag">
+          You are not authorized to access this page. Try logging in first.
+        </p>
+        <div>
+          <a href="/users/login" class="text-xs"
+            >Already have an account? Login</a
+          >
         </div>
+      </div>
     </div>
-
-</body>
+  </body>
 </html>
-
